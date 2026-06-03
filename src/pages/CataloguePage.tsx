@@ -1,68 +1,103 @@
-import { Globe, Headset, ShieldCheck, Truck, Download, FileText } from 'lucide-react';
+import { Truck, Headset, CreditCard, Package } from 'lucide-react';
+
+// Exact values traced from CATALOUGE.png reference
+const S = {
+  headerBg: "#0f0f0f",
+  textWhite: "#ffffff",
+  textMuted: "#a0a0a0",
+  mainBg: "#ffffff",
+  mainText: "#1a1a1a",
+  footerBg: "#222222",
+  accent: "#ffaa00", // exact gold/yellow from reference
+};
 
 export default function CataloguePage() {
   return (
-    <>
-      <div className="bg-black pt-24 pb-16">
-        <div className="container-main text-center">
-          <p className="text-gray-400 text-sm mb-4">HOME / CATALOGUE</p>
-          <h1 className="text-4xl md:text-5xl font-bold text-white">Catalogue</h1>
-        </div>
+    <div style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+      {/* Header section matching reference */}
+      <div style={{ backgroundColor: S.headerBg, padding: '120px 0 80px', textAlign: 'center' }}>
+        <h1 style={{ 
+          color: S.textWhite, 
+          fontSize: '48px', 
+          fontWeight: 'bold', 
+          margin: '0 0 16px 0', 
+          letterSpacing: '-1px' 
+        }}>
+          Catalouge
+        </h1>
+        <p style={{ 
+          color: S.textWhite, 
+          fontSize: '10px', 
+          fontWeight: 'bold', 
+          letterSpacing: '2px', 
+          margin: 0,
+          textTransform: 'uppercase'
+        }}>
+          HOME / CATALOUGE
+        </p>
       </div>
       
-      <div className="bg-black py-20">
-        <div className="container-main max-w-4xl text-center">
-          <div className="border border-white/10 bg-white/5 p-12 md:p-20 rounded-xl relative overflow-hidden group">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-30 group-hover:opacity-100 transition-opacity duration-1000" />
-            
-            <p className="text-gold text-sm tracking-widest font-bold mb-6">FULL INTERACTIVE BROCHURE</p>
-            <h2 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tight">COMING SOON</h2>
-            <p className="text-gray-400 leading-relaxed max-w-2xl mx-auto mb-12">
-              We are currently digitizing our comprehensive physical catalogs into a premium, interactive online 3D flipbook dashboard. This will allow teams and retailers to dynamically swatch custom fabric colors and preview sublimated textures before scheduling orders.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
-              <button 
-                onClick={() => alert("Our full 2026 Sportswear Catalogue PDF download is being prepared. Our sales team has been notified and will email you the catalog files directly.")}
-                className="bg-gold text-black font-bold px-8 py-4 rounded hover:bg-white transition-colors duration-300 flex items-center gap-3"
-              >
-                <Download size={20} />
-                <span>DOWNLOAD 2026 PREVIEW PDF</span>
-              </button>
-              <a href="/contact" className="border border-white/20 text-white font-bold px-8 py-4 rounded hover:bg-white/10 transition-colors duration-300">
-                REQUEST CUSTOM SAMPLE
-              </a>
-            </div>
-          </div>
-        </div>
+      {/* Main Content section matching reference */}
+      <div style={{ backgroundColor: S.mainBg, padding: '200px 24px', textAlign: 'center' }}>
+        <h2 style={{ 
+          color: S.mainText, 
+          fontSize: 'clamp(60px, 10vw, 120px)', 
+          fontFamily: 'Georgia, "Times New Roman", serif', 
+          fontWeight: '900', 
+          letterSpacing: '-2px',
+          margin: 0,
+          lineHeight: 1
+        }}>
+          COMING SOON
+        </h2>
       </div>
 
-      <div className="bg-[#0a0a0a] py-24 border-t border-white/10">
-        <div className="container-main">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-            <div className="flex flex-col items-start text-left group">
-              <Globe className="text-gold mb-6 group-hover:scale-110 transition-transform duration-300" size={32} />
-              <h4 className="text-white font-bold tracking-widest text-sm mb-3">SHIPPING WORLDWIDE</h4>
-              <p className="text-gray-400 text-sm leading-relaxed">No destination is out of reach. We ship seamlessly to Europe, Americas, and Oceania.</p>
-            </div>
-            <div className="flex flex-col items-start text-left group">
-              <Headset className="text-gold mb-6 group-hover:scale-110 transition-transform duration-300" size={32} />
-              <h4 className="text-white font-bold tracking-widest text-sm mb-3">24/7 SUPPORT DESK</h4>
-              <p className="text-gray-400 text-sm leading-relaxed">Our sourcing agents are online around the clock to assist you with order modifications.</p>
-            </div>
-            <div className="flex flex-col items-start text-left group">
-              <ShieldCheck className="text-gold mb-6 group-hover:scale-110 transition-transform duration-300" size={32} />
-              <h4 className="text-white font-bold tracking-widest text-sm mb-3">ONLINE PAYMENT</h4>
-              <p className="text-gray-400 text-sm leading-relaxed">Secure commercial wire transfers, online payment portals, and direct LC options.</p>
-            </div>
-            <div className="flex flex-col items-start text-left group">
-              <Truck className="text-gold mb-6 group-hover:scale-110 transition-transform duration-300" size={32} />
-              <h4 className="text-white font-bold tracking-widest text-sm mb-3">FAST DELIVERY</h4>
-              <p className="text-gray-400 text-sm leading-relaxed">Meticulously managed packaging timelines and express air freight integrations.</p>
+      {/* Logistics Bar matching reference */}
+      <div style={{ backgroundColor: S.footerBg, padding: '50px 0', borderTop: '1px solid #333' }}>
+        <div style={{ 
+          maxWidth: '1400px', 
+          margin: '0 auto', 
+          padding: '0 24px', 
+          display: 'flex', 
+          justifyContent: 'space-between', 
+          flexWrap: 'wrap', 
+          gap: '32px' 
+        }}>
+          
+          <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', flex: '1 1 200px' }}>
+            <Truck style={{ color: S.accent }} size={32} strokeWidth={1.5} />
+            <div>
+              <h4 style={{ color: S.textWhite, fontSize: '14px', fontWeight: 'bold', margin: '0 0 8px 0' }}>Shipping worldwide</h4>
+              <p style={{ color: S.textMuted, fontSize: '12px', margin: 0, lineHeight: 1.5 }}>No one rejects, dislikes...</p>
             </div>
           </div>
+
+          <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', flex: '1 1 200px' }}>
+            <Headset style={{ color: S.accent }} size={32} strokeWidth={1.5} />
+            <div>
+              <h4 style={{ color: S.textWhite, fontSize: '14px', fontWeight: 'bold', margin: '0 0 8px 0' }}>24/7 Support.</h4>
+              <p style={{ color: S.textMuted, fontSize: '12px', margin: 0, lineHeight: 1.5 }}>It has survived not only...</p>
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', flex: '1 1 200px' }}>
+            <CreditCard style={{ color: S.accent }} size={32} strokeWidth={1.5} />
+            <div>
+              <h4 style={{ color: S.textWhite, fontSize: '14px', fontWeight: 'bold', margin: '0 0 8px 0' }}>Online Payment.</h4>
+              <p style={{ color: S.textMuted, fontSize: '12px', margin: 0, lineHeight: 1.5 }}>Yes we have online payment</p>
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', flex: '1 1 200px' }}>
+            <Package style={{ color: S.accent }} size={32} strokeWidth={1.5} />
+            <div>
+              <h4 style={{ color: S.textWhite, fontSize: '14px', fontWeight: 'bold', margin: '0 0 8px 0' }}>Fast Delivery.</h4>
+              <p style={{ color: S.textMuted, fontSize: '12px', margin: 0, lineHeight: 1.5 }}>We have very fast delivery</p>
+            </div>
+          </div>
+
         </div>
       </div>
-    </>
+    </div>
   );
 }
