@@ -10,8 +10,8 @@ module.exports = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        gold: { DEFAULT: "#f5a623", hover: "#d4a017", dim: "#c9840a" },
-        dark: { DEFAULT: "#000000", light: "#0a0a0a", card: "#111111" },
+        gold: { DEFAULT: "#ffaa00", hover: "#e69900", dim: "#cc8800" },
+        dark: { DEFAULT: "#1a1a1a", light: "#2a2a2a", card: "#1e1e1e" },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

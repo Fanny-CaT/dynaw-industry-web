@@ -29,27 +29,28 @@ export default function CategoryPage() {
   return (
     <>
       {/* Hero */}
-      <div className="bg-black pt-12 pb-6">
+      <div className="bg-[#1a1a1a] pt-16 pb-12">
         <div className="container-main">
-          <button className="flex items-center gap-2 text-gray-400 hover:text-gold text-sm mb-4">
-            <ChevronLeft className="w-4 h-4" /> Back to Products
-          </button>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">{currentCategory.name}</h1>
+          <div className="flex items-center gap-4 mb-8">
+            <button className="text-white hover:text-[#ffaa00] transition-colors">
+              <ChevronLeft className="w-8 h-8" />
+            </button>
+            <h1 className="text-5xl font-bold text-white">{currentCategory.name}</h1>
+          </div>
 
           {/* Category Tabs */}
-          <div className="flex flex-wrap gap-2 overflow-x-auto pb-2">
+          <div className="flex flex-wrap gap-8">
             {categories.map((cat) => (
               <a
                 key={cat.slug}
                 href={`/products?category=${cat.slug}`}
                 onClick={(e) => { e.preventDefault(); window.location.href = `/products?category=${cat.slug}`; }}
-                className={`px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap transition-colors ${
-                  cat.slug === categorySlug
-                    ? 'bg-gold text-black'
-                    : 'bg-white/10 text-gray-300 hover:bg-white/20'
-                }`}
+                className="group flex flex-col"
               >
-                {cat.name.toUpperCase()} ({cat.productCount})
+                <span className={`text-sm font-bold uppercase transition-colors ${
+                  cat.slug === categorySlug ? 'text-[#ffaa00]' : 'text-white group-hover:text-[#ffaa00]'
+                }`}>{cat.name}</span>
+                <span className="text-xs text-gray-400 mt-1">{cat.productCount} Products</span>
               </a>
             ))}
           </div>
@@ -57,30 +58,44 @@ export default function CategoryPage() {
       </div>
 
       {/* Products */}
-      <div className="bg-white py-12">
+      <div className="bg-white py-8">
         <div className="container-main">
-          {/* Breadcrumb */}
-          <p className="text-gray-500 text-sm mb-4">Dynaw Industry &gt; {currentCategory.name} &gt; {currentCategory.subcategories[0]}</p>
-
           {/* Controls */}
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-            <div className="flex items-center gap-4">
-              <select value={perPage} onChange={(e) => setPerPage(Number(e.target.value))} className="border rounded-lg px-3 py-2 text-sm text-gray-700">
-                {[9, 12, 18, 24].map(n => <option key={n} value={n}>{n}</option>)}
-              </select>
-              <span className="text-gray-500 text-sm">Per page</span>
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-8 text-sm">
+            <div className="text-gray-500">
+              Home / Dynaw Industry / <span className="text-gray-900">{currentCategory.name}</span>
             </div>
 
-            <div className="flex items-center gap-4">
-              <div className="flex border rounded-lg overflow-hidden">
-                <button onClick={() => setViewMode('grid')} className={`p-2 ${viewMode === 'grid' ? 'bg-gold text-black' : 'text-gray-400'}`}>
-                  <LayoutGrid className="w-4 h-4" />
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-2">
+                <span className="text-gray-900 font-medium">Show:</span>
+                {[9, 12, 18, 24].map((n, i) => (
+                  <span key={n} className="flex items-center">
+                    <button 
+                      onClick={() => setPerPage(n)} 
+                      className={`${perPage === n ? 'text-gray-900 font-bold' : 'text-gray-500 hover:text-gray-900'}`}
+                    >
+                      {n}
+                    </button>
+                    {i < 3 && <span className="mx-2 text-gray-300">/</span>}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-2 text-gray-400">
+                <button onClick={() => setViewMode('grid')} className={`hover:text-gray-900 ${viewMode === 'grid' ? 'text-gray-900' : ''}`}>
+                  <LayoutGrid className="w-5 h-5" />
                 </button>
-                <button onClick={() => setViewMode('list')} className={`p-2 ${viewMode === 'list' ? 'bg-gold text-black' : 'text-gray-400'}`}>
-                  <List className="w-4 h-4" />
+                <button onClick={() => setViewMode('list')} className={`hover:text-gray-900 ${viewMode === 'list' ? 'text-gray-900' : ''}`}>
+                  <List className="w-5 h-5" />
                 </button>
               </div>
-              <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} className="border rounded-lg px-3 py-2 text-sm text-gray-700">
+
+              <select 
+                value={sortBy} 
+                onChange={(e) => setSortBy(e.target.value)} 
+                className="bg-transparent border-none text-gray-900 font-medium focus:outline-none focus:ring-0 cursor-pointer"
+              >
                 <option value="default">Default sorting</option>
                 <option value="price-low">Price: Low to High</option>
                 <option value="price-high">Price: High to Low</option>

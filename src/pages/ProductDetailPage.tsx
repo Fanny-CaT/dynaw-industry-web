@@ -219,12 +219,12 @@ export default function ProductDetailPage() {
       </div>
 
       {/* Related Products */}
-      <div className="bg-black py-16">
+      <div className="bg-white py-16 border-t">
         <div className="container-main">
-          <h2 className="text-3xl font-bold text-gold text-center mb-12">RELATED PRODUCTS</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">RELATED PRODUCTS</h2>
           <div ref={relatedRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {relatedProducts.map((p) => (
-              <ProductCard key={p.id} product={p} variant="dark" />
+              <ProductCard key={p.id} product={p} variant="light" />
             ))}
           </div>
         </div>

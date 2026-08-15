@@ -25,11 +25,11 @@ export default function ProductCard({ product, variant = 'dark' }: ProductCardPr
     <>
       <div className={`group relative rounded-xl overflow-hidden ${bgClass} transition-all duration-300 hover:shadow-[0_8px_32px_rgba(245,166,35,0.15)]`}>
         {/* Image */}
-        <div className="relative aspect-square overflow-hidden">
+        <div className="relative aspect-[4/5] bg-white overflow-hidden flex items-center justify-center p-4">
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+            className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
             onClick={() => navigate(`/product/${product.slug}`)}
           />
 
